@@ -1,0 +1,27 @@
+.nav {
+  width: 100vw;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.nav__link{
+  text-align: center;
+
+  
+  text-decoration: none;
+}
+
+.nav__link-icon {
+  font-size: 2rem;
+}
+
+.nav__link-text {
+  font-size: 0.6rem;
+}
+
+.nav__link:visited {
+  all: unset;
+}

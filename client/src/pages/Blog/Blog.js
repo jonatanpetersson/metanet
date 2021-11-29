@@ -3,7 +3,7 @@ import './Blog.scss'
 
 const Blog = () => {
     return (
-        <main>
+        <main class="page__blog">
             Blog
         </main>
     )

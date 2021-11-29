@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+	width: 100vw;
+  height: 100vh;
+
+	background: linear-gradient(-45deg, #ee765281, #e73c7e80, #23a5d57e, #23d5ab7e);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  width: 100vw;
+
+  flex-basis: auto;
+  flex-grow: 1;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

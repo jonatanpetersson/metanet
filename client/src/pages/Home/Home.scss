@@ -1,0 +1,20 @@
+.page__home {
+  padding: 1rem;
+  gap: .65rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page__home-btn{
+  width: max-content;
+  padding: .5rem;
+
+  font-size: 1.1rem;
+
+  background-color: #7B61FF;
+  border-radius: 5px;
+  color: white;
+  border: none;
+}

@@ -4,7 +4,7 @@ import Logo from './Logo/Logo';
 
 const Header = () => {
     return (
-        <header>
+        <header className='header'>
             <Logo />
         </header>
     )
