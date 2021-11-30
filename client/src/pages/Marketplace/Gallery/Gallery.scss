@@ -1,0 +1,14 @@
+.gallery__wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    margin: .5rem;
+    
+}
+
+.gallery__wrapper-img{
+    width: 100%;
+}

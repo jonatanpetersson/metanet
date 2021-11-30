@@ -1,0 +1,46 @@
+.sort{
+    padding: 1rem;
+}
+
+.sort__form{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.sort__form-options{
+    display: flex;
+    width: 100%;
+    gap: .2rem;
+}
+
+.sort__form-metaverses{
+
+    width: 80%;
+}
+
+.sort__form__select{
+
+    width: 100%;
+    padding: 1rem .5rem;
+    margin: .5rem 0;
+    display:inline-block;
+    border: 1px solid #ccc;
+    border-radius: .2rem;
+    box-sizing: border-box;
+}
+
+.sort__form-btn-group{
+    display: flex;
+    margin: 0.5rem 0;
+    gap: .2rem;
+}
+.sort__form-btn {
+    background: none;
+    border-radius: 1px solid #ccc;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}

@@ -1,10 +1,13 @@
 import React from 'react'
 import './Marketplace.scss'
+import Sort from './Sort/Sort'
+import Gallery from './Gallery/Gallery'
 
 const Marketplace = () => {
     return (
-        <main>
-            Marketplace
+        <main className="page__marketplace">
+            <Sort />
+            <Gallery />
         </main>
     )
 }
