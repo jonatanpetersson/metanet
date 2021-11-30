@@ -5,6 +5,8 @@ import Marketplace from './pages/Marketplace/Marketplace';
 import Blog from './pages/Blog/Blog';
 import About from './pages/About/About';
 import Profile from './pages/Profile/Profile';
+import Login from './pages/Register/Login/Login';
+import SignUp from './pages/Register/SignUp/SignUp';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.scss';
@@ -25,6 +27,11 @@ export const App = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />}/>
+        {/* <Route exact path="/login" element={<Login />}>
+          <Route path="signup" element={<SignUp/>}/>
+        </Route> */}
+        <Route path="/signup" element={<SignUp />}/>
       </Routes>
       <Footer />
   </>

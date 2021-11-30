@@ -17,9 +17,20 @@ const Nav = () => {
                 <span className="nav__link-icon material-icons-outlined">info</span>
                 <p className="nav__link-text">About</p>
             </Link>
+            {/* render it when user is login */}
             <Link className="nav__link" to='/profile'>
                 <span className="nav__link-icon material-icons-outlined">face</span>
                 <p className="nav__link-text">Profile</p>
+            </Link>
+            {/* render it by default */}
+            <Link className="nav__link" to='/login'>
+                <span className="nav__link-icon material-icons-outlined">login</span>
+                <p className="nav__link-text">Login</p>
+            </Link>
+            {/* example */}
+            <Link className="nav__link" to='/signup'>
+                <span className="nav__link-icon material-icons-outlined">person_add</span>
+                <p className="nav__link-text">Signup</p>
             </Link>
         </nav>
     )

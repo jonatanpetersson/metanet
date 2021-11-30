@@ -1,0 +1,43 @@
+.page__register{
+    border-radius: .2rem;
+    // background-color: #f2f2f2;
+    padding: 2rem;
+}
+
+.page__register-title{
+    padding-bottom: 6rem;
+}
+
+.page__register__form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.page__register__form-text{
+    width: 100%;
+    padding: 1rem .5rem;
+    margin: .5rem 0;
+    display: inline-block;
+    border: 1px solid #333;
+    border-radius: .2rem;
+    box-sizing: border-box;
+}
+
+.page__register__form-btn{
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: .2rem;
+    cursor: pointer;
+}
+.page__register__form-btn:hover{
+    opacity: .8;
+}
+
+.page__register__form-join{
+    text-align: center;
+}
