@@ -1,0 +1,51 @@
+.item__trading{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    padding: .4rem;
+    background-color: #FBFDFF;
+}
+
+.item__trading-price{
+    color: gray;
+}
+
+.item__trading-info{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.item__trading-display{
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.item__trading-dollar{
+    color: gray;
+}
+
+.item__trading-btngroup{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+
+}
+
+.item__trading-btnbuy{
+    border: none;
+    border-radius: .4rem;
+    height: 2.5rem;
+    background-color: blue;
+    
+}
+.item__trading-btnoffer{
+    border: none;
+    border-radius: .4rem;
+    height: 40px;
+    background-color:white;
+    border: 1px solid #ccc;
+}

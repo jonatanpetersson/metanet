@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Marketplace from './pages/Marketplace/Marketplace';
+import Item from './pages/Item/Item';
 import Blog from './pages/Blog/Blog';
 import About from './pages/About/About';
 import Profile from './pages/Profile/Profile';
@@ -24,6 +25,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/item" element={<Item />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />

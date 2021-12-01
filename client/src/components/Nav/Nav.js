@@ -9,6 +9,10 @@ const Nav = () => {
                 <span className="nav__link-icon material-icons-outlined">apps</span>
                 <p className="nav__link-text">Marketsplace</p>
             </Link>
+            <Link className="nav__link" to='/item'>
+                <span className="nav__link-icon material-icons-outlined">category</span>
+                <p className="nav__link-text">Item</p>
+            </Link>
             <Link className="nav__link" to='/blog'>
                 <span className="nav__link-icon material-icons-outlined">rss_feed</span>
                 <p className="nav__link-text">Blog</p>
