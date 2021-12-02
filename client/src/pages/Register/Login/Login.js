@@ -4,7 +4,7 @@ import { Link, Outlet, Route, Routes, Navigate } from "react-router-dom";
 import { loginAction } from '../../../actions/auth';
 import axios from 'axios';
 import './Login.scss';
-import '../Register.scss'
+import '../Form.scss'
 
 const Login = () => {
   const dispatch = useDispatch();
