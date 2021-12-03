@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './SignUp.scss';
 import '../Form.scss'
 
 const SignUp = () => {
+  const [signupInfo, setSignupInfo] = useState({
+    username: '',
+    password: '',
+  })
+
+  const inputHandler = (ev) => {
+    setSignupInfo({ ...signupInfo, [ev.target.name]: ev.target.value })
+  }
+
+  const signupHandler = async (ev) => {
+    ev.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:4000/api/auth/signup', {
+        username: signupInfo.username,
+        password: signupInfo.password
+      });
+      console.log(response)
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
 
   return (
     <main className="page__register" >
@@ -14,22 +35,22 @@ const SignUp = () => {
         <Link to="/login">Log in</Link>
       </p>
 
-      <form className="page__register__form">
+      <form className="page__register__form" onSubmit={signupHandler}>
         <div>
           <label for="fname">First name</label>
-          <input className="page__register__form-text" type="text" name="fname" required />
+          <input className="page__register__form-text" type="text" name="fname" />
           <label for="lname">Last name</label>
-          <input className="page__register__form-text" type="text" name="lname" required />
+          <input className="page__register__form-text" type="text" name="lname" />
         </div>
 
         <label for="email">Email address</label>
-        <input className="page__register__form-text" type="text" name="email" placeholder="Please provide your email address" required />
-
+        <input className="page__register__form-text" type="text" name="email" placeholder="Please provide your email address" />
+        
         <label for="username">Username <span className="page__register__form-info">(only letters, numbers, and underscores)</span> </label>
-        <input className="page__register__form-text" type="text" name="username" placeholder="Please provide username" required />
+        <input className="page__register__form-text" type="text" name="username" placeholder="Please provide username" onChange={inputHandler} required />
 
         <label for="password">Password <span className="page__register__form-info">(min. 6 char)</span> </label>
-        <input className="page__register__form-text" type="password" name="password" placeholder="Please provide password" required />
+        <input className="page__register__form-text" type="password" name="password" placeholder="Please provide password" onChange={inputHandler} required />
 
         <input className="page__register__form-btn" type="submit" value="Signup" />
       </form>

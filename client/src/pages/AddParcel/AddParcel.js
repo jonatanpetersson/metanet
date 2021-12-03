@@ -8,11 +8,16 @@ function CreateItem() {
   const [parcelData, setParcelData] = useState(null);
   const [idInput, setIdInput] = useState(null);
   const [inputData, setInputData] = useState({
+    user: 'testUser',
+    metaverse: 'testMetaverse',
+    image: 'testImage',
     name: '',
     description: '',
+    external_url: 'testUrl',
     area: '',
     island: '',
     suburb: '',
+    price: '',
   });
 
   const handleIdInput = ev => setIdInput(ev.currentTarget.value);
@@ -44,8 +49,39 @@ function CreateItem() {
   }
 
   const handleInputData = (ev) => {
-    setInputData({...inputData, [ev.target.name]: ev.target.value})
-    // setInputData([...inputData, { name: ev.target.value, description: ev.target.value }]);
+    setInputData({ ...inputData, [ev.target.name]: ev.target.value })
+  }
+
+  const addHandler = async (ev) => {
+    ev.preventDefault();
+    try {
+      const mutationBody = `mutation {
+        createParcel(parcel: {
+          user: ${inputData.user},
+          metaverse: ${inputData.metaverse},
+          parcelId: ${inputData.user},
+          name: ${inputData.name},
+          price: ${inputData.price},
+          image: ${inputData.image},
+          description: ${inputData.description},
+          external_url: ${inputData.external_url},
+          area: ${inputData.area},
+          island: ${inputData.island},
+          suburb: ${inputData.suburb}
+        }) {
+          parcelId,
+          name,
+          user
+        }
+      }`
+
+      const response = await axios.post('http://localhost:5000/graphql', {
+        query: mutationBody
+      });
+      console.log(response)
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 
   return (
@@ -57,27 +93,35 @@ function CreateItem() {
         <input className="page__register__form-text" type="text" name="fname" onChange={handleIdInput} required />
         <input className="page__register__form-btn" type="submit" value="Confirm id" />
       </form>
-      {parcelData ? 
-      <form className="page__register__form">
-        <label for="name">Name</label>
-        <input className="page__register__form-text" type="text" name="name" onChange={handleInputData} value={inputData.name} required />
+      {parcelData ?
+        <form className="page__register__form" onSubmit={addHandler}>
 
-        <label for="description">Description</label>
-        <input className="page__register__form-text" type="text" name="description" onChange={handleInputData} value={inputData.description} required />
+          <div className="item__counts-img">
+            <img src={parcelData.image} alt="" />
+          </div>
 
-        <label for="area">Area</label>
-        <input className="page__register__form-text" type="text" name="area" onChange={handleInputData} value={inputData.area} required />
+          <label for="name">Name</label>
+          <input className="page__register__form-text" type="text" name="name" onChange={handleInputData} value={inputData.name} required />
 
-        <label for="island">Island</label>
-        <input className="page__register__form-text" type="text" name="island" onChange={handleInputData} value={inputData.island} required />
+          <label for="description">Description</label>
+          <input className="page__register__form-text" type="text" name="description" onChange={handleInputData} value={inputData.description} required />
 
-        <label for="suburb">Suburb</label>
-        <input className="page__register__form-text" type="text" name="suburb" onChange={handleInputData} value={inputData.suburb} required />
+          <label for="area">Area</label>
+          <input className="page__register__form-text" type="text" name="area" onChange={handleInputData} value={inputData.area} required />
 
-        <input className="page__register__form-btn" type="submit" value="Add parcel to marketplace" />
-      </form> 
-      : ''}
-      
+          <label for="island">Island</label>
+          <input className="page__register__form-text" type="text" name="island" onChange={handleInputData} value={inputData.island} required />
+
+          <label for="suburb">Suburb</label>
+          <input className="page__register__form-text" type="text" name="suburb" onChange={handleInputData} value={inputData.suburb} required />
+
+          <label for="suburb">Price</label>
+          <input className="page__register__form-text" type="text" name="price" onChange={handleInputData} value={inputData.price} required />
+
+          <input className="page__register__form-btn" type="submit" value="Add parcel to marketplace" />
+        </form>
+        : ''}
+
 
     </main>
   )
