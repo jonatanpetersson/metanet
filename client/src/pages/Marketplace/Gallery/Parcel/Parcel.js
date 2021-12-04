@@ -1,8 +1,8 @@
 import React from 'react';
 import './Parcel.scss';
 
-const Parcel = (parcel) => {
-  const {image, metaverse, user, price} = parcel.parcel;
+const Parcel = ({ parcel }) => {
+  const { image, metaverse, user, price } = parcel;
 
   return (
     <li className="gallery__wrapper-item" >

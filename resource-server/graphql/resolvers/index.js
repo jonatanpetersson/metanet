@@ -11,6 +11,15 @@ export const getParcels = async () => {
     };
 };
 
+export const getParcelById = async (args) => {
+  try {
+      const fetchedParcel = await ParcelModel.findOne(args);;
+      return fetchedParcel;
+  } catch (err) {
+      console.log(err.message);
+  };
+};
+
 export const createParcel = async args => {
   try {
     const { 

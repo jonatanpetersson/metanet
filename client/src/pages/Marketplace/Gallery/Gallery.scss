@@ -47,6 +47,12 @@
     margin: .5rem;
 
 }
+
+.gallery__item-link {
+  all: unset;
+  cursor: pointer;
+}
+
 .gallery__wrapper__item {
     display: flex;
     justify-content: space-between;

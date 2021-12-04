@@ -13,9 +13,9 @@ const ItemSocial = () => {
           <span className="material-icons-outlined">share</span>
         </button >
         <div className="item__social-content" >
-          <a href="#"><span className="material-icons-outlined">content_copy</span>Copy link</a>
-          <a href="#"><span className="material-icons-outlined">psychology</span>Share on Facebook</a>
-          <a href="#"><span className="material-icons-outlined">sports_basketball</span>Share on Twitter</a>
+          <a href="/"><span className="material-icons-outlined">content_copy</span>Copy link</a>
+          <a href="/"><span className="material-icons-outlined">psychology</span>Share on Facebook</a>
+          <a href="/"><span className="material-icons-outlined">sports_basketball</span>Share on Twitter</a>
         </div>
       </div>
     </section>

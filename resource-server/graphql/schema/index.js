@@ -33,6 +33,7 @@ input ParcelInput {
 
 type Query {
   getParcels:[Parcel!]
+  getParcelById(_id: ID!): Parcel
 }
 
 type Mutation {

@@ -28,7 +28,7 @@ export const loginController = async (req, res) => {
       const accessToken = jwt.sign(
         { username: req.body.username },
         jwtSecret,
-        { expiresIn: "1d" }
+        { expiresIn: "15m" }
       )
       res.status(200).header('metanetauth', accessToken).send('Logged in');
     } else {
