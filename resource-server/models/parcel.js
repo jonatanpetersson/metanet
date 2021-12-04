@@ -8,7 +8,7 @@ const parcelSchema = new Schema(
       type: String,
       required: true,
     },
-    parcelId: {
+    parcel_id: {
       type: String,
       required: true,
     },

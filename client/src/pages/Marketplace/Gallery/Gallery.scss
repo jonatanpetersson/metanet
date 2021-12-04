@@ -39,7 +39,6 @@
     gap: 1rem;
     padding: .5rem;
     list-style: none;
-
 }
 
 .gallery__wrapper-item{
@@ -71,5 +70,5 @@
 }
 .gallery__wrapper__footer-fav {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }

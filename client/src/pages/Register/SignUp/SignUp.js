@@ -5,25 +5,15 @@ import './SignUp.scss';
 import '../Form.scss'
 
 const SignUp = () => {
-  const [signupInfo, setSignupInfo] = useState({
-    username: '',
-    password: '',
-  })
+  const [signupInfo, setSignupInfo] = useState({ username: '', password: '' });
 
-  const inputHandler = (ev) => {
-    setSignupInfo({ ...signupInfo, [ev.target.name]: ev.target.value })
-  }
-
-  const signupHandler = async (ev) => {
+  const inputHandler = ev => setSignupInfo({ ...signupInfo, [ev.target.name]: ev.target.value });
+  const signupHandler = async ev => {
     ev.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/signup', {
-        username: signupInfo.username,
-        password: signupInfo.password
-      });
-      console.log(response)
-    } catch (e) {
-      console.log(e.message);
+      await axios.post('http://localhost:4000/api/auth/signup', { username: signupInfo.username, password: signupInfo.password});
+    } catch (err) {
+      console.log(err.message);
     }
   }
 
@@ -37,19 +27,19 @@ const SignUp = () => {
 
       <form className="page__register__form" onSubmit={signupHandler}>
         <div>
-          <label for="fname">First name</label>
+          <label htmlFor="fname">First name</label>
           <input className="page__register__form-text" type="text" name="fname" />
-          <label for="lname">Last name</label>
+          <label htmlFor="lname">Last name</label>
           <input className="page__register__form-text" type="text" name="lname" />
         </div>
 
-        <label for="email">Email address</label>
+        <label htmlFor="email">Email address</label>
         <input className="page__register__form-text" type="text" name="email" placeholder="Please provide your email address" />
         
-        <label for="username">Username <span className="page__register__form-info">(only letters, numbers, and underscores)</span> </label>
+        <label htmlFor="username">Username <span className="page__register__form-info">(only letters, numbers, and underscores)</span> </label>
         <input className="page__register__form-text" type="text" name="username" placeholder="Please provide username" onChange={inputHandler} required />
 
-        <label for="password">Password <span className="page__register__form-info">(min. 6 char)</span> </label>
+        <label htmlFor="password">Password <span className="page__register__form-info">(min. 6 char)</span> </label>
         <input className="page__register__form-text" type="password" name="password" placeholder="Please provide password" onChange={inputHandler} required />
 
         <input className="page__register__form-btn" type="submit" value="Signup" />

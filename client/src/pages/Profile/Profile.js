@@ -3,7 +3,7 @@ import './Profile.scss'
 
 const Profile = () => {
     return (
-        <main class="page__profile">
+        <main className="page__profile">
             Profile
         </main>
     )

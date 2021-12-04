@@ -1,13 +1,16 @@
-import React from 'react'
-import './Home.scss'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Home.scss';
 
 
 const Home = () => {
   return (
-    <main class="page__home">
+    <main className="page__home">
         <h1 className="page__home-title">Welcome to Metanet</h1>
         <p className="page__home-text">Explore, learn about Metaverse, Buy, Sell</p>
+        <Link className="page__home-link" to='/marketplace'>
         <button className="page__home-btn">EXPLORE</button>
+        </Link>
     </main>
     )
 }

@@ -1,38 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Outlet, Route, Routes, Navigate } from "react-router-dom";
+import { Link, useNavigate, Outlet } from "react-router-dom";
 import { loginAction } from '../../../actions/auth';
 import axios from 'axios';
 import './Login.scss';
 import '../Form.scss'
 
 const Login = () => {
-  const [loginInfo, setLoginInfo] = useState({
-    username: '',
-    password: '',
-  })
-
+  const [loginInfo, setLoginInfo] = useState({ username: '', password: '', })
   const dispatch = useDispatch();
-
-  const inputHandler = (ev) => {
-    setLoginInfo({ ...loginInfo, [ev.target.name]: ev.target.value })
-  }
-
-  const loginHandler = async (ev) => {
+  const navigate = useNavigate();
+  const inputHandler = ev => setLoginInfo({ ...loginInfo, [ev.target.name]: ev.target.value });
+  const loginHandler = async ev => {
     ev.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/login', {
-        username: loginInfo.username,
-        password: loginInfo.password
-      });
-      setLoginInfo({
-        username: '',
-        password: '',
-      })
-      console.log(response.headers.metanetauth);
+      const response = await axios.post('http://localhost:4000/api/auth/login', { username: loginInfo.username, password: loginInfo.password });
+      setLoginInfo({ username: '', password: '' });
       dispatch(loginAction(response.headers.metanetauth));
-    } catch (e) {
-      console.log(e.message);
+      navigate('/');
+    } catch (err) {
+      console.log(err.message);
     }
   }
 
@@ -40,9 +27,9 @@ const Login = () => {
     <main className="page__register">
       <h1 className="page__register-title">Login</h1>
       <form className="page__register__form" onSubmit={loginHandler}>
-        <label for="email">Username</label>
+        <label htmlFor="email">Username</label>
         <input className="page__register__form-text" type="text" name="username" placeholder="Please provide your username" onChange={inputHandler} required />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input className="page__register__form-text" type="password" name="password" placeholder="Please provide your password" onChange={inputHandler} required />
         <input className="page__register__form-btn" type="submit" value="Login" />
       </form>
@@ -51,6 +38,7 @@ const Login = () => {
         <Link to="/signup">Sign up</Link>
       </p>
 
+      {/* What is outlet?! //Jonatan */}
       <Outlet />
 
       {/* <Routes>

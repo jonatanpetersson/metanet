@@ -5,7 +5,7 @@ export const parcelSchema = buildSchema(`
 type Parcel {
   _id: ID!
   user: String!
-  parcelId: String!
+  parcel_id: String!
   metaverse: String!
   name: String!
   price: String!
@@ -20,7 +20,7 @@ type Parcel {
 input ParcelInput {
   user: String!
   metaverse: String!
-  parcelId: String!
+  parcel_id: String!
   name: String!
   price: String!
   image: String!

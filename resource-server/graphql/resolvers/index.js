@@ -15,7 +15,7 @@ export const createParcel = async args => {
   try {
     const { 
       user,
-      parcelId,
+      parcel_id,
       metaverse,
       name,
       price,
@@ -29,7 +29,7 @@ export const createParcel = async args => {
 
     const parcel = new ParcelModel({
       user,
-      parcelId,
+      parcel_id,
       metaverse,
       name,
       price,

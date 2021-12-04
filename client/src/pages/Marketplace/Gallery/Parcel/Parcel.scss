@@ -1,0 +1,39 @@
+.gallery__wrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: .5rem;
+  list-style: none;
+}
+
+.gallery__wrapper-item{
+  border: 1px solid #ccc;
+  border-radius: .4rem;
+  margin: .5rem;
+
+}
+.gallery__wrapper__item {
+  display: flex;
+  justify-content: space-between;
+  padding: .3rem .6rem;
+}
+.gallery__wrapper__item-info {
+  display: flex;
+  flex-direction: column;
+}
+.verified-icons-color {
+  color: green;
+}
+.gallery__wrapper-img{
+  width: 100%;
+}
+.gallery__wrapper__footer {
+  width: 100%;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 1px whitesmoke inset;
+  padding: .3rem .6rem;
+}
+.gallery__wrapper__footer-fav {
+  display: flex;
+  justify-content: flex-end;
+}
