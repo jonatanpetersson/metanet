@@ -1,11 +1,11 @@
 import React from 'react'
 import './ItemSocial.scss'
 
-const ItemSocial = () => {
+const ItemSocial = ({ metaverse }) => {
   return (
     <section className="item__social">
       <div className="item__social-metaverse" >
-        <span>Decentraland</span>
+        <span>{ metaverse.replace(metaverse[0], metaverse[0].toUpperCase()) }</span>
         <span className="verified-icons-color material-icons-outlined">verified</span>
       </div>
       <div className="item__social-links" >

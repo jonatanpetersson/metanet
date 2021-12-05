@@ -26,3 +26,16 @@ query {
   }
 }
 `;
+
+export const getUserByUsername = username => `
+query {
+  getUserByUsername(user: "${username}") {
+    user,
+    email,
+    firstname,
+    lastname,
+    image,
+    description
+  }
+}
+`;

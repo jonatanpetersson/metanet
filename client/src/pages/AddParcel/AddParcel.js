@@ -90,8 +90,6 @@ function AddParcel() {
           <input className="page__register__form-btn" type="submit" value="Add parcel to marketplace" />
         </form>
         : ''}
-
-
     </main>
   )
 }

@@ -49,6 +49,6 @@ const parcelSchema = new Schema(
       required: true,
     },
   }
-)
+);
 
 export const ParcelModel = mongoose.model('Parcel', parcelSchema);

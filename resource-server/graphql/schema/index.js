@@ -31,13 +31,34 @@ input ParcelInput {
   suburb: String!
 }
 
+type User {
+  _id: ID!
+  user: String!
+  email: String!
+  firstname: String
+  lastname: String
+  image: String
+  description: String
+}
+
+input UserInput {
+  user: String!
+  email: String!
+  firstname: String
+  lastname: String
+  image: String
+  description: String
+}
+
 type Query {
   getParcels:[Parcel!]
   getParcelById(_id: ID!): Parcel
+  getUserByUsername(user: String!): User
 }
 
 type Mutation {
   createParcel(parcel:ParcelInput): Parcel
+  createUser(user:UserInput): User
 }
 
 schema {

@@ -5,7 +5,7 @@ import './Nav.scss';
 
 const Nav = () => {
 
-  const accessToken = useSelector(state => state.loginReducer);
+  const accessToken = useSelector(state => state.authReducer);
 
   return (
     <nav className="nav">
@@ -26,15 +26,15 @@ const Nav = () => {
         <p className="nav__link-text">About</p>
       </Link>
       {/* render it when user is login */}
-      {accessToken ? <Link className="nav__link" to='/profile'>
+      {accessToken 
+      ? <Link className="nav__link" to='/profile'>
         <span className="nav__link-icon material-icons-outlined">face</span>
         <p className="nav__link-text">Profile</p>
-      </Link> : ''}
-      {/* render it by default */}
-      {!accessToken ? <Link className="nav__link" to='/login'>
+      </Link> 
+      : <Link className="nav__link" to='/login'>
         <span className="nav__link-icon material-icons-outlined">login</span>
         <p className="nav__link-text">Login</p>
-      </Link> : ''}
+      </Link>}
     </nav>
   )
 }

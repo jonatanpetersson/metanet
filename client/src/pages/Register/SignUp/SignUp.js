@@ -5,13 +5,13 @@ import './SignUp.scss';
 import '../Form.scss'
 
 const SignUp = () => {
-  const [signupInfo, setSignupInfo] = useState({ username: '', password: '' });
+  const [signupInfo, setSignupInfo] = useState({ username: '', email: '', password: '' });
 
   const inputHandler = ev => setSignupInfo({ ...signupInfo, [ev.target.name]: ev.target.value });
   const signupHandler = async ev => {
     ev.preventDefault();
     try {
-      await axios.post('http://localhost:4000/api/auth/signup', { username: signupInfo.username, password: signupInfo.password});
+      await axios.post('http://localhost:4000/api/auth/signup', { username: signupInfo.username, email: signupInfo.email, password: signupInfo.password});
     } catch (err) {
       console.log(err.message);
     }
@@ -26,15 +26,8 @@ const SignUp = () => {
       </p>
 
       <form className="page__register__form" onSubmit={signupHandler}>
-        <div>
-          <label htmlFor="fname">First name</label>
-          <input className="page__register__form-text" type="text" name="fname" />
-          <label htmlFor="lname">Last name</label>
-          <input className="page__register__form-text" type="text" name="lname" />
-        </div>
-
         <label htmlFor="email">Email address</label>
-        <input className="page__register__form-text" type="text" name="email" placeholder="Please provide your email address" />
+        <input className="page__register__form-text" type="text" name="email" placeholder="Please provide your email address" onChange={inputHandler} required/>
         
         <label htmlFor="username">Username <span className="page__register__form-info">(only letters, numbers, and underscores)</span> </label>
         <input className="page__register__form-text" type="text" name="username" placeholder="Please provide username" onChange={inputHandler} required />

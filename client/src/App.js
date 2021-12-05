@@ -17,7 +17,7 @@ export const App = () => {
 
   const checkJwtExpiration = () => {
     if (!localStorage.jwt) {
-      console.log('No JWT present');
+      console.log('No JWT present - not logged in');
     } else {
       console.log('Checking JWT Expiration...')
       const expirationTime = JSON.parse(Buffer.from(localStorage.jwt.split('.')[1], 'base64')).exp;

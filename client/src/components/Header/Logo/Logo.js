@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoMetanet from '../../../assets/img/logo.svg'
+import LogoMetanet from '../../../assets/img/metaLogo.svg'
 import './Logo.scss';
 
 const Logo = () => {
     return (
         <div>
             <Link to='/'>
-                <img src={LogoMetanet} alt='Metanet Logo' />
+                <img className= "logo" src={LogoMetanet} alt='Metanet Logo' />
             </Link>
         </div>
     )

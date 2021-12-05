@@ -3,12 +3,10 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { graphqlHTTP } from 'express-graphql';
 import { parcelSchema } from './graphql/schema/index.js';
-import { getParcels, getParcelById, createParcel } from './graphql/resolvers/index.js';
+import { getParcels, getParcelById, createParcel, createUser, getUserByUsername } from './graphql/resolvers/index.js';
 import cors from 'cors';
 
-const corsOptions = {
-  exposedHeaders: '*'
-}
+const corsOptions = { exposedHeaders: '*' };
 
 dotenv.config();
 const app = express();
@@ -21,7 +19,7 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema: parcelSchema,
-    rootValue: { getParcels, getParcelById, createParcel },
+    rootValue: { getParcels, getParcelById, createParcel, createUser, getUserByUsername },
     graphiql: true,
   }),
 );
