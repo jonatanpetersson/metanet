@@ -27,18 +27,27 @@ export const signupController = async (req, res) => {
       }
     }
     `;
-    const response = await axios.post('http://localhost:5000/graphql', { query });
-    res.status(201).json(savedUser);
-    console.log('User created')
+    const accessToken = jwt.sign(
+      { username: req.body.username },
+      jwtSecret,
+      { expiresIn: "1m" }
+    );
+    await axios.post('http://localhost:5000/graphql',
+      { query },
+      { headers: 
+        { 'Authorization': `Bearer ${accessToken}` }
+      });
+    res.sendStatus(201);
+    console.log('User created');
   } catch (e) {
-    res.status(500).send(e.message);
+    res.sendStatus(500);
   }
 };
 
 export const loginController = async (req, res) => {
   const user = await UserModel.findOne({ username: req.body.username });
   if (!user) {
-    return res.status(400).send('Wrong username');
+    return res.sendStatus(400);
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -46,7 +55,7 @@ export const loginController = async (req, res) => {
       const accessToken = jwt.sign(
         { username: req.body.username },
         jwtSecret,
-        { expiresIn: "15m" }
+        { expiresIn: "1m" }
       )
       res.status(200).header('metanetauth', accessToken).send('Logged in');
     } else {

@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getParcelsQuery } from '../../../api/querys';
-import axios from 'axios';
 import Parcel from './Parcel/Parcel';
 import { CircularProgress } from '../../../components/CircularProgress/CircularProgress';
+import { loadMarketplace } from '../../../api'
 import './Gallery.scss';
 
 const Gallery = () => {
   const [parcelsData, setParcelsData] = useState(null);
 
-  const loadMarketplace = async () => {
-    try {
-      const query = getParcelsQuery();
-      const response = await axios.post('http://localhost:5000/graphql', { query });
-      const allParcels = response.data.data.getParcels;
-      setParcelsData(allParcels);
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
-
   useEffect(() => {
-    loadMarketplace();
+    loadMarketplace(setParcelsData);
   }, []);
 
   return (

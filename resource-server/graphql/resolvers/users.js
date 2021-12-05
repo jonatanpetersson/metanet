@@ -11,7 +11,6 @@ export const getUserByUsername = async (args) => {
 
 export const createUser = async args => {
   try {
-    console.log(args);
     const { 
       user,
       email,
@@ -32,7 +31,7 @@ export const createUser = async args => {
 
     const newUser = await userObj.save();
 
-    console.log(newUser);
+    console.log('Created new user: ', newUser);
     return newUser;
 
   } catch (err) {

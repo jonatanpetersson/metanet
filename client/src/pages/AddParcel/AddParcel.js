@@ -1,37 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { createParcelMutation } from '../../api/mutations';
+import { loadInfoToCreateParcel } from '../../api';
+import { createParcel } from '../../api';
 import './AddParcel.scss';
 import '../Register/Form.scss';
 import '../Marketplace/Sort/Sort.scss';
 
 function AddParcel() {
   const [idInput, setIdInput] = useState(null);
-  const [inputData, setInputData] = useState({metaverse: 'cryptovoxels'});
+  const [inputData, setInputData] = useState({ metaverse: 'cryptovoxels' });
 
   const handleIdInput = ev => setIdInput(ev.target.value);
 
   const handleIdConfirmation = async ev => {
     ev.preventDefault();
-    try {
-      const data = await axios.get(`https://www.cryptovoxels.com/p/${idInput}`);
-      console.log(data.data);
-      setInputData({
-        user: JSON.parse(Buffer.from(localStorage.jwt.split('.')[1], 'base64')).username,
-        metaverse: inputData.metaverse,
-        parcel_id: idInput,
-        name: data.data.name,
-        image: data.data.image,
-        description: data.data.description,
-        external_url: data.data.external_url,
-        area: data.data.attributes.area,
-        island: data.data.attributes.island,
-        suburb: data.data.attributes.suburb,
-        price: '',
-      });
-    } catch (err) {
-      console.log(err.message);
-    }
+    loadInfoToCreateParcel(setInputData, idInput, inputData);
   }
 
   const handleInputData = (ev) => {
@@ -40,13 +22,7 @@ function AddParcel() {
 
   const addHandler = async (ev) => {
     ev.preventDefault();
-    try {
-      const query = createParcelMutation(inputData);
-      const response = await axios.post('http://localhost:5000/graphql', { query });
-      console.log(response)
-    } catch (e) {
-      console.log(e.message);
-    }
+    createParcel(inputData)
   }
 
   return (

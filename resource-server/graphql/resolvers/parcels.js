@@ -3,8 +3,7 @@ import { ParcelModel } from "../../models/parcel.js";
 export const getParcels = async () => {
     try {
         const fetchedParcels = await ParcelModel.find();
-
-        console.log(fetchedParcels);
+        console.log('Fetched all parcels');
         return fetchedParcels;
     } catch (err) {
         console.log(err.message);
@@ -13,7 +12,8 @@ export const getParcels = async () => {
 
 export const getParcelById = async (args) => {
   try {
-      const fetchedParcel = await ParcelModel.findOne(args);;
+      const fetchedParcel = await ParcelModel.findOne(args);
+      console.log('Fetched parcel by id');
       return fetchedParcel;
   } catch (err) {
       console.log(err.message);
@@ -52,7 +52,7 @@ export const createParcel = async args => {
 
     const newParcel = await parcel.save();
 
-    console.log(newParcel);
+    console.log('new Parcel created');
     return newParcel;
 
   } catch (err) {

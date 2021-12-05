@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { graphqlHTTP } from 'express-graphql';
 import { parcelSchema } from './graphql/schema/index.js';
-import { getParcels, getParcelById, createParcel, createUser, getUserByUsername } from './graphql/resolvers/index.js';
+import resolvers from './graphql/resolvers/index.js';
+import { isAuthorized } from './middleware/auth.js';
 import cors from 'cors';
 
 const corsOptions = { exposedHeaders: '*' };
@@ -15,11 +16,12 @@ const connectionString = process.env.CONNECTION_STRING;
 
 app.use(express.json());
 app.use(cors(corsOptions));
+app.use(isAuthorized);
 app.use(
   '/graphql',
   graphqlHTTP({
     schema: parcelSchema,
-    rootValue: { getParcels, getParcelById, createParcel, createUser, getUserByUsername },
+    rootValue: { ...resolvers },
     graphiql: true,
   }),
 );
@@ -27,9 +29,9 @@ app.use(
 (async () => {
   try {
     await mongoose.connect(connectionString);
-    console.log('Connected to db')
+    console.log('Connected to db');
     app.listen(port, () => console.log('Server up'));
-  } catch (error) {
-    console.log(error.message);
+  } catch (err) {
+    console.log(err.message);
   }
 })();
