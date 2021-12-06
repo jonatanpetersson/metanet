@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { loadInfoToCreateParcel } from '../../api';
-import { createParcel } from '../../api';
+import React, { useState, useEffect } from 'react';
+import { loadInfoToCreateParcel, createParcel, validateJwt } from '../../api/fetch';
+import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { logoutAction } from '../../actions/auth';
 import './AddParcel.scss';
 import '../Register/Form.scss';
 import '../Marketplace/Sort/Sort.scss';
@@ -8,6 +10,8 @@ import '../Marketplace/Sort/Sort.scss';
 function AddParcel() {
   const [idInput, setIdInput] = useState(null);
   const [inputData, setInputData] = useState({ metaverse: 'cryptovoxels' });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleIdInput = ev => setIdInput(ev.target.value);
 
@@ -24,6 +28,10 @@ function AddParcel() {
     ev.preventDefault();
     createParcel(inputData)
   }
+
+  useEffect(() => {
+    validateJwt(navigate, dispatch, logoutAction);
+  }, []);
 
   return (
     <main className="page__register" >

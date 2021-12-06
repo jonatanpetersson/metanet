@@ -5,7 +5,7 @@ import ItemCounts from './ItemCounts/ItemCounts';
 import ItemTrading from './ItemTrading/ItemTrading';
 import ItemInfo from './ItemInfo/ItemInfo';
 import { CircularProgress } from '../../components/CircularProgress/CircularProgress';
-import { loadParcel } from '../../api';
+import { loadParcel } from '../../api/fetch.js';
 import './Item.scss';
 
 const Item = () => {

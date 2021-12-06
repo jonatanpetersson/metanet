@@ -1,15 +1,15 @@
-export const authReducer = (initialState = localStorage.jwt || '', action) => {
+export const authReducer = (initialState = localStorage.jwt ? true : false, action) => {
   switch (action.type) {
     case 'LOGIN':
       if (action.payload.accessToken) {
         localStorage.setItem('jwt', action.payload.accessToken);
-        return action.payload.accessToken
+        return true;
       } else {
         return initialState;
       }
     case 'LOGOUT':
       localStorage.removeItem('jwt');
-      return null;
+      return false;
     default:
       return initialState;
   }

@@ -15,27 +15,6 @@ import './App.scss';
 
 export const App = () => {
 
-  const checkJwtExpiration = () => {
-    if (!localStorage.jwt) {
-      console.log('No JWT present - not logged in');
-    } else {
-      console.log('Checking JWT Expiration...')
-      const expirationTime = JSON.parse(Buffer.from(localStorage.jwt.split('.')[1], 'base64')).exp;
-      const nowTime = Math.floor(new Date().getTime() / 1000);
-      const expired = nowTime >= expirationTime;
-      console.log(expirationTime);
-      console.log(nowTime);
-      if (!expired) {
-        console.log('JWT valid.');
-      } else {
-        localStorage.removeItem('jwt');
-        console.log('JWT invalid and removed. Log in again.');
-      }
-    }
-  }
-
-  checkJwtExpiration();
-
   return (
     <>
       {/* <div class="hero-content">

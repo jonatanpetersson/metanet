@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import UserModel from '../models/User.js';
 import dotenv from 'dotenv';
-dotenv.config();
 
+dotenv.config();
 const jwtSecret = process.env.JWT_SECRET;
 
 export const signupController = async (req, res) => {
@@ -47,11 +47,11 @@ export const signupController = async (req, res) => {
 export const loginController = async (req, res) => {
   const user = await UserModel.findOne({ username: req.body.username });
   if (!user) {
+    console.log('User not found')
     return res.sendStatus(400);
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-
       const accessToken = jwt.sign(
         { username: req.body.username },
         jwtSecret,
@@ -59,6 +59,7 @@ export const loginController = async (req, res) => {
       )
       res.status(200).header('metanetauth', accessToken).send('Logged in');
     } else {
+      console.log('Wrong password');
       res.status(400).send('Wrong password');
     }
   } catch (e) {

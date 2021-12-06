@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginAction } from '../../../actions/auth';
-import axios from 'axios';
+import { login } from '../../../api/fetch.js';
 import './Login.scss';
 import '../Form.scss'
 
@@ -13,14 +13,7 @@ const Login = () => {
   const inputHandler = ev => setLoginInfo({ ...loginInfo, [ev.target.name]: ev.target.value });
   const loginHandler = async ev => {
     ev.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:4000/api/auth/login', { username: loginInfo.username, password: loginInfo.password });
-      setLoginInfo({ username: '', password: '' });
-      dispatch(loginAction(response.headers.metanetauth));
-      navigate('/');
-    } catch (err) {
-      console.log(err.message);
-    }
+    login(loginInfo, setLoginInfo, dispatch, navigate, loginAction);
   }
 
   return (
@@ -37,14 +30,6 @@ const Login = () => {
         <span>Don't have an account? </span>
         <Link to="/signup">Sign up</Link>
       </p>
-
-      {/* What is outlet?! //Jonatan */}
-      <Outlet />
-
-      {/* <Routes>
-                <Route path="/login" element={<Navigate to="/signup"/>}/>
-                <Route path="/signup" element={<SignUp />}/>
-            </Routes> */}
     </main>
   )
 }

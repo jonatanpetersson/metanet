@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Parcel from './Parcel/Parcel';
 import { CircularProgress } from '../../../components/CircularProgress/CircularProgress';
-import { loadMarketplace } from '../../../api'
+import { loadMarketplace } from '../../../api/fetch.js'
 import './Gallery.scss';
 
 const Gallery = () => {

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
-
   const accessToken = useSelector(state => state.authReducer);
 
   return (
