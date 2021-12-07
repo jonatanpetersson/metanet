@@ -1,0 +1,15 @@
+.profile__parcels {
+    background-color: #f3f3f3;
+    border: none;
+    border-radius: 0.4rem;
+}
+.profile__parcels-title {
+    text-align: left;
+}
+.profile__parcels__wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: .5rem;
+    padding: .5rem;
+    list-style: none;
+}

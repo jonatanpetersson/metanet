@@ -5,7 +5,7 @@ import { CircularProgress } from '../../../components/CircularProgress/CircularP
 import { loadMarketplace } from '../../../api/fetch.js'
 import './Gallery.scss';
 
-const Gallery = () => {
+const Gallery = ({isGridView}) => {
   const [parcelsData, setParcelsData] = useState(null);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Gallery = () => {
 
   return (
     <section className="gallery" >
-      <ul className="gallery__wrapper">
+      <ul className={isGridView ? 'gallery__wrapper gallery__wrapper-gridview' : 'gallery__wrapper' }>
         {!parcelsData
           ? <>
               <CircularProgress />

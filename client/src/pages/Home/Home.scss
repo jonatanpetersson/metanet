@@ -1,11 +1,11 @@
 .page__home {
-  padding: 1rem;
-  gap: .65rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: .65rem;
+  
+  padding: 1rem;
 }
 .page__home-btn {
   width: max-content;

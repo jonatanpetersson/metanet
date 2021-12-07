@@ -1,7 +1,11 @@
 import React from 'react'
 import './Sort.scss'
 
-const Sort = () => {
+const Sort = ({isGridView, setGridView}) => {
+  const handleGridView = (e) => {
+    e.preventDefault();
+    setGridView(!isGridView);
+  }
   return (
     <section className="sort">
       <form className="sort__form">
@@ -15,11 +19,15 @@ const Sort = () => {
           </select>
 
           <div className="sort__form-btn-group">
-            <button className="sort__form-btn">
+            {/* <button className="sort__form-btn">
               <span className="material-icons-outlined">fullscreen</span>
-            </button>
-            <button className="sort__form-btn">
-              <span className="material-icons-outlined">grid_view</span>
+            </button> */}
+            <button className="sort__form-btn" onClick={handleGridView}>
+              { isGridView ? 
+                <span className="material-icons-outlined">fullscreen</span>
+              :
+                <span className="material-icons-outlined">grid_view</span>
+              }
             </button>
           </div>
         </div>
