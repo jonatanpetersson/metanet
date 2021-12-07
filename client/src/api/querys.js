@@ -13,6 +13,7 @@ query {
 export const getParcelByIdQuery = id => `
 query {
   getParcelById(_id: "${id}") {
+    _id,
     name,
     metaverse,
     image,
@@ -36,6 +37,27 @@ query {
     lastname,
     image,
     description
+  }
+}
+`;
+
+export const getOffersByUsername = username => `
+query {
+  getOffersByUsername(user: "${username}") {
+    _id
+    parcel_id
+    name
+    price
+    image
+    owner
+    offer
+    bidder
+    offer
+    message
+    replies {
+      user
+      reply
+    }
   }
 }
 `;

@@ -12,3 +12,9 @@ export const logoutAction = () => {
     type: 'LOGOUT'
   }
 }
+
+export const verifyTokenAction = () => {
+  return {
+    type: 'VERIFY_TOKEN'
+  }
+}

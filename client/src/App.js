@@ -10,6 +10,7 @@ import { ProfileModel } from './components/Modals/ProfileModal/ProfileModel';
 import Login from './pages/Register/Login/Login';
 import SignUp from './pages/Register/SignUp/SignUp';
 import Item from './pages/Item/Item';
+import Offers from './pages/Offers/Offers';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.scss';
@@ -39,6 +40,8 @@ export const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/marketplace/:id" element={<Item />} />    
+        <Route path="/marketplace/:id" element={<Item />} />
+        <Route path="/offers" element={<Offers />} />
       </Routes>
       <Footer />
     </>

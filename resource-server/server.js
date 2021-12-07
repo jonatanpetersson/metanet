@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { graphqlHTTP } from 'express-graphql';
-import { parcelSchema } from './graphql/schema/index.js';
+import { allSchemas } from './graphql/schema/index.js';
 import resolvers from './graphql/resolvers/index.js';
 import { isAuthorized } from './middleware/auth.js';
 import cors from 'cors';
@@ -20,7 +20,7 @@ app.use(isAuthorized);
 app.use(
   '/graphql',
   graphqlHTTP({
-    schema: parcelSchema,
+    schema: allSchemas,
     rootValue: { ...resolvers },
     graphiql: true,
   }),

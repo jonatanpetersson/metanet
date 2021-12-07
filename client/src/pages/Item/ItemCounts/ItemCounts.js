@@ -16,8 +16,8 @@ const ItemCounts = ({ name, image, user }) => {
                 </div>
                 <div className="item__counts-info">
                     <span>Owned by {user}</span>
-                    <span className="material-icons-outlined">visibility</span>
-                    <span>75000 views</span>
+                    {/* <span className="material-icons-outlined">visibility</span>
+                    <span>75000 views</span> */}
                 </div>
             </div>
         </section>
