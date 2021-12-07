@@ -30,7 +30,7 @@ export const signupController = async (req, res) => {
     const accessToken = jwt.sign(
       { username: req.body.username },
       jwtSecret,
-      { expiresIn: "50m" }
+      { expiresIn: "1m" }
     );
     await axios.post('http://localhost:5000/graphql',
       { query },
@@ -55,7 +55,7 @@ export const loginController = async (req, res) => {
       const accessToken = jwt.sign(
         { username: req.body.username },
         jwtSecret,
-        { expiresIn: "1h" }
+        { expiresIn: "1d" }
       )
       res.status(200).header('metanetauth', accessToken).send('Logged in');
     } else {

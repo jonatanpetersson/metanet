@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { loadProfile, validateJwt } from '../../api/fetch';
+import { loadProfile } from '../../api/fetch';
 import ProfileWrapper from './ProfileWrapper/ProfileWrapper';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { logoutAction } from '../../actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { verifyTokenAction } from '../../actions/auth';
 import './Profile.scss';
 
 const Profile = () => {
+  const loggedInUser = useSelector(state => state.authorization);
   const [userData, setUserData] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    validateJwt(navigate, dispatch, logoutAction);
+    dispatch(verifyTokenAction());
+    if (!loggedInUser) navigate('/login'); 
+    setUserData(loggedInUser);
     loadProfile(setUserData);
-  }, [dispatch, navigate]);
+  }, [loggedInUser])
 
   return (
     <main className="page__profile">
-      {userData ? <ProfileWrapper userData={userData}/> : ''}
+      {userData ? <ProfileWrapper userData={userData} /> : ''}
     </main>
   )
 }

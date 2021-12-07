@@ -1,5 +1,5 @@
-.profile__modal-window {
-    position: fixed;
+.profile__model-window {
+    // position: fixed;
     background-color: rgba(255, 255, 255, 0.25);
     top: 0;
     right: 0;
@@ -10,11 +10,11 @@
     // opacity: 0;
     visibility: visible;
     opacity: 1;
-    pointer-events: none;
+    // pointer-events: none;
     transition: all 0.3s;
     
   }
-  .profile__modal-window:target {
+  .profile__model-window:target {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
@@ -34,7 +34,7 @@
     border-radius: 1rem;
   }
   
-  .profile__modal-close {
+  .profile__model-close {
     color: #aaa;
     line-height: 50px;
     font-size: 80%;
@@ -45,38 +45,38 @@
     width: 70px;
     text-decoration: none;
   }
-  .profile__modal-close:hover {
+  .profile__model-close:hover {
     color: black;
   }
   
   /* Demo Styles */
   
-  .profile__modal-window div:not(:last-of-type) {
+  .profile__model-window div:not(:last-of-type) {
     margin-bottom: 15px;
   }
-.profile__modal__img {
+.profile__model__img {
     width: 50%;
     border-radius: 50%;
 }
 
-.profile__modal__title{
+.profile__model__title{
     font-weight: 100;
     padding: 1rem
 }
-.profile__modal-nav {
+.profile__model-nav {
     display: flex;
     flex-direction: column;
     gap: .6rem;
     align-self: flex-start;
 }
-.profile__modal-nav a {
+.profile__model-nav a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
     padding: .3rem;
 }
-.profile__modal-nav a span {
+.profile__model-nav a span {
     color: silver;
 }
 .nav__link-font {

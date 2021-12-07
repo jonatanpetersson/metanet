@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import './SignUp.scss';
 import '../Form.scss'
 
 const SignUp = () => {
   const [signupInfo, setSignupInfo] = useState({ username: '', email: '', password: '' });
-
+  const navigate = useNavigate();
   const inputHandler = ev => setSignupInfo({ ...signupInfo, [ev.target.name]: ev.target.value });
   const signupHandler = async ev => {
     ev.preventDefault();
     try {
       await axios.post('http://localhost:4000/api/auth/signup', { username: signupInfo.username, email: signupInfo.email, password: signupInfo.password});
+      navigate('/login')
     } catch (err) {
       console.log(err.message);
     }

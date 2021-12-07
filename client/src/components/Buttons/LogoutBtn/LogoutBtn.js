@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router';
 import './LogoutBtn.scss';
 
 const Logout = () => {
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const logoutHandler = () => {

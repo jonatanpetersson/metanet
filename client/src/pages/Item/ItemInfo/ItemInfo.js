@@ -8,7 +8,7 @@ const ItemInfo = ({ description, suburb, island }) => {
         <p>{description}</p>
         <h3>Suburb</h3>
         <p>{suburb}</p>
-        <h3>island</h3>
+        <h3>Island</h3>
         <p>{island}</p>
       </section>
     )

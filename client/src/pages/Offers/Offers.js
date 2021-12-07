@@ -13,7 +13,6 @@ const Offers = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    console.log(loggedInUser);
     dispatch(verifyTokenAction());
     loggedInUser ? loadOffers(loggedInUser, setOffersData) : navigate('/login');
   }, [dispatch, navigate, loggedInUser])

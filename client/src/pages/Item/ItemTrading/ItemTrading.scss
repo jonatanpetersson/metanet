@@ -54,6 +54,15 @@
     border: 1px solid #ccc;
 }
 
+.item__trading-success {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: green;
+}
+
 .page__register{
   border-radius: .2rem;
   // background-color: #f2f2f2;

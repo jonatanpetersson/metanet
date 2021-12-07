@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { ProfileModel } from '../Modals/ProfileModal/ProfileModel';
+import { ProfileModel } from '../Models/ProfileModel/ProfileModel';
 import './Nav.scss';
-import '../Modals/ProfileModal/ProfileModel.scss';
+import '../Models/ProfileModel/ProfileModel.scss';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const accessToken = useSelector(state => state.authReducer);
+  const loggedInUser = useSelector(state => state.authorization);
 
   return (
     <nav className="nav">
@@ -30,16 +30,8 @@ const Nav = () => {
         <p className="nav__link-text">About</p>
       </Link>
       {/* render it when user is login */}
-      {accessToken 
-      ? <Link 
-          className="nav__link" 
-          to="/profile" 
-          // to={{
-          //   pathname: "/profile",
-          //   hash: "#open-modal-profile",
-          //   state: { isOpen: true }
-          // }}
-        >
+      {loggedInUser 
+      ? <Link className="nav__link" to="/profile" >
         <span className="nav__link-icon material-icons-outlined">face</span>
         <p className="nav__link-text">Profile</p>
       </Link> 
@@ -47,10 +39,6 @@ const Nav = () => {
         <span className="nav__link-icon material-icons-outlined">login</span>
         <p className="nav__link-text">Login</p>
       </Link>}
-      <Link className="nav__link profile__modal-window" to='/modal'>
-        <span className="nav__link-icon material-icons-outlined">login</span>
-        <p className="nav__link-text">Modal</p>
-      </Link>
     </nav>
   )
 }

@@ -8,21 +8,19 @@ import Eth from '../../../assets/img/eth.svg';
 
 const ItemTrading = ({ parcelData }) => {
   const loggedInUser = useSelector(state => state.authorization);
-  const [inputData, setInputData] = useState({ ...parcelData });
-  const [Form, setForm] = useState(false);
+  const [inputData, setInputData] = useState({ ...parcelData, bidder: loggedInUser });
+  const [Form, setForm] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleInputData = ev => setInputData({ ...inputData, [ev.target.name]: ev.target.value });
-  const toggleOfferHandler = () => !loggedInUser ? navigate('/login') : setForm(!Form);
+  const toggleOfferHandler = () => !loggedInUser ? navigate('/login') : setForm(1);
   const submitOfferHandler = (ev) => {
     ev.preventDefault();
     dispatch(verifyTokenAction());
     if (loggedInUser) {
-      setInputData({ ...inputData, bidder: loggedInUser });
-      setTimeout(() => {
-        createOffer(inputData);
-      }, 0);
+      createOffer(inputData);
+      setForm(2)
     };
   };
 
@@ -31,18 +29,21 @@ const ItemTrading = ({ parcelData }) => {
       <p className="item__trading-price">Current price</p>
       <div className="item__trading-info">
         <span><img className="item__trading-img" alt="Ethereum" src={Eth} /></span>
-        <span className="item__trading-display">{parcelData.price} eth</span>
+        <span className="item__trading-display">{parcelData.price} ETH</span>
       </div>
       <div className="item__trading-btngroup">
         <a href={parcelData.external_url} target="_blank" rel="noreferrer" className="item__trading-btnbuy">Buy now on official site</a>
-        {!Form ? <button className="item__trading-btnoffer" onClick={toggleOfferHandler} >{loggedInUser ? 'Make offer' : 'Log in to make offer'}</button>
-          : <form className="page__register__form" onSubmit={submitOfferHandler}>
+        {(Form === 0) ? <button className="item__trading-btnoffer" onClick={toggleOfferHandler} >{loggedInUser ? 'Make offer' : 'Log in to make offer'}</button>
+          : (Form === 1) ? <form className="page__register__form" onSubmit={submitOfferHandler}>
             <label htmlFor="parcelid">Make your offer</label>
             <input className="page__register__form-text" type="text" name="offer" placeholder="Offer" onChange={handleInputData} required />
             <input className="page__register__form-text" type="text" name="message" placeholder="Message to owner (optional)" onChange={handleInputData} />
             <input className="page__register__form-btn" type="submit" value="Send offer" />
           </form>
-        }
+            : <div className="item__trading-success">
+              <span className="material-icons-outlined" >task_alt</span>
+              <p> Offer sent</p>
+            </div>}
       </div>
     </section>
   )
