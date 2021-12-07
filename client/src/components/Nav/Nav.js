@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
-  const accessToken = useSelector(state => state.authReducer);
+  const loggedInUser = useSelector(state => state.authorization);
 
   return (
     <nav className="nav">
@@ -16,7 +16,7 @@ const Nav = () => {
         <span className="nav__link-icon material-icons-outlined">rss_feed</span>
         <p className="nav__link-text">Blog</p>
       </Link>
-      <Link className="nav__link" to={accessToken ? '/addparcel' : '/login'}>
+      <Link className="nav__link" to={loggedInUser ? '/addparcel' : '/login'}>
         <span className="nav__link-create-icon material-icons-outlined">add_circle_outline</span>
         <p className="nav__link-text">Add Parcel</p>
       </Link>
@@ -24,8 +24,7 @@ const Nav = () => {
         <span className="nav__link-icon material-icons-outlined">info</span>
         <p className="nav__link-text">About</p>
       </Link>
-      {/* render it when user is login */}
-      {accessToken 
+      {loggedInUser 
       ? <Link className="nav__link" to='/profile'>
         <span className="nav__link-icon material-icons-outlined">face</span>
         <p className="nav__link-text">Profile</p>

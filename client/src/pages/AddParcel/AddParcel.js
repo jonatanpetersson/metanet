@@ -1,37 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { loadInfoToCreateParcel, createParcel, validateJwt } from '../../api/fetch';
+import React, { useState } from 'react';
+import { loadInfoToCreateParcel, createParcel } from '../../api/fetch';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { logoutAction } from '../../actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { verifyTokenAction } from '../../actions/auth';
 import './AddParcel.scss';
 import '../Register/Form.scss';
 import '../Marketplace/Sort/Sort.scss';
 
 function AddParcel() {
+  const loggedInUser = useSelector(state => state.authorization);
   const [idInput, setIdInput] = useState(null);
   const [inputData, setInputData] = useState({ metaverse: 'cryptovoxels' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleIdInput = ev => setIdInput(ev.target.value);
-
-  const handleIdConfirmation = async ev => {
+  const handleInputData = ev => setInputData({ ...inputData, [ev.target.name]: ev.target.value });
+  const handleIdConfirmation = ev => {
     ev.preventDefault();
     loadInfoToCreateParcel(setInputData, idInput, inputData);
   }
-
-  const handleInputData = (ev) => {
-    setInputData({ ...inputData, [ev.target.name]: ev.target.value })
-  }
-
-  const addHandler = async (ev) => {
+  const addHandler = (ev) => {
     ev.preventDefault();
-    createParcel(inputData)
+    dispatch(verifyTokenAction());
+    loggedInUser ? createParcel(inputData) : navigate('/login');
   }
-
-  useEffect(() => {
-    validateJwt(navigate, dispatch, logoutAction);
-  }, []);
 
   return (
     <main className="page__register" >

@@ -18,3 +18,39 @@ mutation {
     user
   }
 }`
+
+export const createOfferMutation = (inputData) => `
+
+mutation {
+  createOffer(offer: {
+    parcel_id: "${inputData._id}",
+    name: "${inputData.name}",
+    price: "${inputData.price}",
+    image: "${inputData.image}",
+    owner: "${inputData.user}",
+    bidder: "${inputData.bidder}",
+    offer: "${inputData.offer}",
+    message: "${inputData.message}",
+  }) {
+    name
+  }
+}
+`;
+
+export const updateOfferMutation = (inputData) => `
+
+mutation {
+  updateOfferById(offer: {
+    parcel_id: "${inputData.parcel_id}",
+    reply: "${inputData.reply}",
+    user: "${inputData.user}"
+  }) {
+    parcel_id
+    replies {
+      reply
+      user
+    }
+  }
+}
+
+`

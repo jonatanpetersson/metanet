@@ -14,7 +14,7 @@ const Item = () => {
 
   useEffect(() => {
     loadParcel(location, setParcelData);
-  }, []);
+  }, [location]);
 
   return (
     <main className="page__item">
@@ -23,10 +23,12 @@ const Item = () => {
           <CircularProgress />
           <span>Loading parcel...</span>
         </>
-      : <><ItemSocial metaverse={parcelData.metaverse} />
+      : <>
+      <ItemSocial metaverse={parcelData.metaverse} />
       <ItemCounts name={parcelData.name} image={parcelData.image} user={parcelData.user} />
-      <ItemTrading price={parcelData.price} external_url={parcelData.external_url} />
-      <ItemInfo description={parcelData.description} island={parcelData.island} suburb={parcelData.suburb} /></>}
+      <ItemTrading parcelData={parcelData} />
+      <ItemInfo description={parcelData.description} suburb={parcelData.suburb} island={parcelData.island} />
+      </>}
     </main>
   )
 }

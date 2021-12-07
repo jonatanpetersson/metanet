@@ -9,7 +9,7 @@ export const isAuthorized = (req, res, next) => {
   const requestQuery = req.body.query;
   const needsVerification = protectedResources.test(requestQuery);
   if (!needsVerification) {
-    console.log('Requesting public resource - authorized without accesstoken')
+    console.log('Requesting public resource - authorized without accesstoken');
     return next();
   }
   if (!req.headers.authorization) {

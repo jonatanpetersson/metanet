@@ -14,7 +14,7 @@ const Profile = () => {
   useEffect(() => {
     validateJwt(navigate, dispatch, logoutAction);
     loadProfile(setUserData);
-  }, []);
+  }, [dispatch, navigate]);
 
   return (
     <main className="page__profile">

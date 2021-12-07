@@ -1,7 +1,5 @@
-import { getParcelsQuery } from './querys.js';
-import { getUserByUsername } from './querys.js';
-import { getParcelByIdQuery } from './querys.js';
-import { createParcelMutation } from './mutations.js';
+import { getParcelsQuery, getUserByUsername, getParcelByIdQuery, getOffersByUsername } from './querys.js';
+import { createParcelMutation, createOfferMutation, updateOfferMutation } from './mutations.js';
 import axios from 'axios';
 
 export const validateJwt = (navigate, dispatch, logoutAction) => {
@@ -95,6 +93,51 @@ export const loadInfoToCreateParcel = async (setInputData, idInput, inputData) =
 export const createParcel = async inputData => {
   try {
     const query = createParcelMutation(inputData);
+    await axios.post('http://localhost:5000/graphql',
+      { query },
+      {
+        headers:
+          { 'Authorization': `Bearer ${localStorage.jwt}` }
+      });
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const loadOffers = async (loggedInUser, setOffersData) => {
+  try {
+    const username = loggedInUser;
+    const query = getOffersByUsername(username);
+    const response = await axios.post('http://localhost:5000/graphql',
+      { query },
+      {
+        headers:
+          { 'Authorization': `Bearer ${localStorage.jwt}` }
+      });
+    const offers = response.data.data.getOffersByUsername;
+    setOffersData(offers);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const createOffer = async inputData => {
+  try {
+    const query = createOfferMutation(inputData);
+    await axios.post('http://localhost:5000/graphql',
+      { query },
+      {
+        headers:
+          { 'Authorization': `Bearer ${localStorage.jwt}` }
+      });
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const updateOffer = async inputData => {
+  try {
+    const query = updateOfferMutation(inputData);
     await axios.post('http://localhost:5000/graphql',
       { query },
       {
