@@ -6,6 +6,7 @@ import AddParcel from './pages/AddParcel/AddParcel';
 import Blog from './pages/Blog/Blog';
 import About from './pages/About/About';
 import Profile from './pages/Profile/Profile';
+import { ProfileModel } from './components/Modals/ProfileModal/ProfileModel';
 import Login from './pages/Register/Login/Login';
 import SignUp from './pages/Register/SignUp/SignUp';
 import Item from './pages/Item/Item';
@@ -32,9 +33,13 @@ export const App = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/modal" element={<ProfileModel />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/marketplace/:id" element={<Item />} />    
         <Route path="/marketplace/:id" element={<Item />} />
         <Route path="/offers" element={<Offers />} />
       </Routes>

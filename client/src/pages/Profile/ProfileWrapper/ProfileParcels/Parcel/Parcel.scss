@@ -1,0 +1,34 @@
+.parcel__wrapper-item{
+    border: 1px solid #E6E8EB;
+    border-radius: .4rem;
+    background-color: white;
+    font-size: 0.5rem;
+  }
+  .parcel__wrapper__item {
+    display: flex;
+    justify-content: space-between;
+    padding: .3rem .6rem;
+  }
+  .parcel__wrapper__item-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .verified-icons-color {
+    color: green;
+  }
+  .parcel__wrapper-img{
+    width: 100%;
+  }
+  .parcel__wrapper__footer {
+    width: 100%;
+    background-color: #FAFAFB;
+    box-shadow: 2px 2px 1px #FAFAFB inset;
+    padding: .3rem .6rem;
+  }
+  .parcel__wrapper__footer-fav {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .verified-icons-size {
+      font-size: 0.6rem;
+  }

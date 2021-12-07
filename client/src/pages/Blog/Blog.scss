@@ -1,0 +1,16 @@
+.page__blog {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1.4rem;
+    gap: 1.4rem;
+
+    padding: 1rem;
+}
+.page__blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.page__blog-title {
+    font-size: 2.5rem;
+}

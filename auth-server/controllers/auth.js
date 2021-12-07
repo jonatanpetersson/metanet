@@ -30,7 +30,7 @@ export const signupController = async (req, res) => {
     const accessToken = jwt.sign(
       { username: req.body.username },
       jwtSecret,
-      { expiresIn: "1m" }
+      { expiresIn: "50m" }
     );
     await axios.post('http://localhost:5000/graphql',
       { query },
