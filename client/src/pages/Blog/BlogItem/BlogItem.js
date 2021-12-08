@@ -8,7 +8,7 @@ export const BlogItem = () => {
             <li className="blog__item">
                 <p className="blog__item-date">Monday 2021.12.06</p>
                 <div className="blog__item-owner">
-                    <img className="blog__item__owner-img" src={blogimage1} alt="blog image" />
+                    <img className="blog__item__owner-img" src={blogimage1} alt="blog post" />
                     <span>
                         <h4 className="blog__item__owner-name">Barack Obama</h4>
                         <p className="blog__item__owner-info">Dad, husband, President, Metaverse citizen</p>
@@ -25,7 +25,7 @@ export const BlogItem = () => {
             <li className="blog__item">
                 <p className="blog__item-date">Monday 2021.12.06</p>
                 <div className="blog__item-owner">
-                    <img className="blog__item__owner-img" src={blogimage2} alt="blog image" />
+                    <img className="blog__item__owner-img" src={blogimage2} alt="blog post" />
                     <span>
                         <h4 className="blog__item__owner-name">Barack Obama</h4>
                         <p className="blog__item__owner-name">Dad, husband, President, Metaverse citizen</p>
@@ -41,7 +41,7 @@ export const BlogItem = () => {
             <li className="blog__item">
                 <p className="blog__item-date">Monday 2021.12.06</p>
                 <div className="blog__item-owner">
-                    <img className="blog__item__owner-img" src={blogimage1} alt="blog image" />
+                    <img className="blog__item__owner-img" src={blogimage1} alt="blog post" />
                     <span>
                         <h4 className="blog__item__owner-name">Barack Obama</h4>
                         <p className="blog__item__owner-name">Dad, husband, President, Metaverse citizen</p>

@@ -2,9 +2,7 @@ import { OfferModel } from "../../models/offer.js";
 
 export const getOffersByUsername = async (args) => {
   try {
-    console.log(args);
     const fetchedOffers = await OfferModel.find(args);
-    console.log(fetchedOffers);
     return fetchedOffers;
   } catch (err) {
     console.log(err.message);
@@ -16,9 +14,9 @@ export const updateOfferById = async ({ offer: { parcel_id, reply, user } }) => 
     const message = { "reply": reply, "user": user };
     const updatedOffer = await OfferModel.findOneAndUpdate(
       { "parcel_id": parcel_id },
-      { $push: { "replies": message } }
+      { $push: { "replies": message } },
+      { new: true }
       );
-    console.log(updatedOffer);
     return updatedOffer;
   } catch (err) {
     console.log(err.message);
@@ -51,7 +49,6 @@ export const createOffer = async args => {
 
     const newOffer = await offerObj.save();
 
-    console.log(newOffer);
     return newOffer;
 
   } catch (err) {

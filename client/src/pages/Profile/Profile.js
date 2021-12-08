@@ -17,7 +17,7 @@ const Profile = () => {
     if (!loggedInUser) navigate('/login'); 
     setUserData(loggedInUser);
     loadProfile(setUserData);
-  }, [loggedInUser])
+  }, [loggedInUser, dispatch, navigate])
 
   return (
     <main className="page__profile">

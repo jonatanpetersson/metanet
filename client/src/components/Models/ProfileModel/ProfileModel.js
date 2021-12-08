@@ -8,6 +8,7 @@ import defaultProfileImage from '../../../assets/img/avatar.jpeg'
 import { profileModel } from '../../../actions/models.js';
 
 export const ProfileModel = () => {
+  const loggedInUser = useSelector(state => state.authorization)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ export const ProfileModel = () => {
                     <span className="material-icons-outlined">highlight_off</span>
                 </button>
                 <img className="profile__model__img" src={defaultProfileImage} alt="Profile img" />
-                <h2 className="profile__model__title">Milos Tanaskovic</h2>
+                <h2 className="profile__model__title">{loggedInUser}</h2>
                 <nav className="profile__model-nav">
                     <Link className="nav__link" to='/profile/account' onClick={handleCloseModel}>
                         <span className="nav__link-icon material-icons-outlined">home</span>

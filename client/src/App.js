@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { verifyTokenAction } from './actions/auth.js';
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Home from './pages/Home/Home';
@@ -17,16 +19,16 @@ import Footer from './components/Footer/Footer';
 import './App.scss';
 
 export const App = () => {
-  const isOpenModel = useSelector(state => state.models);
   const isLoggedIn = useSelector(state => state.authorization);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(verifyTokenAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
     <>
-      {/* <div class="hero-content">
-       <video class="Video portrait" loop="" muted="" autoplay="" width="900" height=" 1920" poster="/static/mobile2-c1a5eec113f39cdf51f5dcc03cb3219e.jpg">
-          <source src="/static/mobile2-a531873e4a5481a9fe73cb980a2256f3.webm" type="video/webm" />
-           <source src="/static/mobile2-af6d461cfec9fc99f8e4e2a94a9747da.mp4" type="video/mp4" />
-       </video>
-     </div> */}
       <Header />
       {isLoggedIn ?
         <ProfileModel />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -34,7 +34,6 @@ const Nav = () => {
         <span className="nav__link-icon material-icons-outlined">info</span>
         <p className="nav__link-text">About</p>
       </Link>
-      {/* render it when user is login */}
       {loggedInUser 
       ? <Link className="nav__link" to="/profile" onClick={handleOpenProfileModel}>
         <span className="nav__link-icon material-icons-outlined">face</span>
