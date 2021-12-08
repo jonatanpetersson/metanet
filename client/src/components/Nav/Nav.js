@@ -1,11 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { profileModel } from '../../actions/models';
 import './Nav.scss';
 import '../Models/ProfileModel/ProfileModel.scss';
 
 const Nav = () => {
+  const dispatch = useDispatch();
   const loggedInUser = useSelector(state => state.authorization);
+  const isOpenModel = useSelector(state => state.models);
+
+  const handleOpenProfileModel = (ev) => {
+    ev.preventDefault();
+    dispatch(profileModel(isOpenModel));
+  }
 
   return (
     <nav className="nav">
@@ -26,7 +35,7 @@ const Nav = () => {
         <p className="nav__link-text">About</p>
       </Link>
       {loggedInUser 
-      ? <Link className="nav__link" to="/profile" >
+      ? <Link className="nav__link" to="/profile" onClick={handleOpenProfileModel}>
         <span className="nav__link-icon material-icons-outlined">face</span>
         <p className="nav__link-text">Profile</p>
       </Link> 

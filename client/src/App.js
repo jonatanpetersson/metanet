@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { verifyTokenAction } from './actions/auth.js';
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Home from './pages/Home/Home';
 import Marketplace from './pages/Marketplace/Marketplace';
 import AddParcel from './pages/AddParcel/AddParcel';
@@ -18,7 +19,8 @@ import Footer from './components/Footer/Footer';
 import './App.scss';
 
 export const App = () => {
-const dispatch = useDispatch()
+  const isLoggedIn = useSelector(state => state.authorization);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(verifyTokenAction());
@@ -28,6 +30,11 @@ const dispatch = useDispatch()
   return (
     <>
       <Header />
+      {isLoggedIn ?
+        <ProfileModel />
+      : 
+        ''
+      }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/marketplace" element={<Marketplace />} />

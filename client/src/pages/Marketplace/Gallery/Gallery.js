@@ -22,7 +22,11 @@ const Gallery = ({isGridView}) => {
             </>
           : parcelsData.map(parcel =>
             <Link key={parcel._id} className="gallery__item-link" to={`/marketplace/${parcel._id}`}>
-              <Parcel data-id={parcel._id} parcel={parcel} />
+              <Parcel 
+                data-id={parcel._id} 
+                parcel={parcel}
+                isGridView={isGridView}
+              />
             </Link>
           )}
       </ul>

@@ -62,54 +62,6 @@
   gap: 0.5rem;
 }
 
-.offers__offer-replies {
-  list-style-type: none;
-  padding: 0.5rem;
-}
-
-.offers__offer-replies-reply {
-
-}
-
-.offers__offer-replies-reply-text {
-  border: 1px solid rgb(247, 245, 245);
-  border-radius: 1rem;
-  padding: 0.1rem 0.3rem;
-  background-color: white;
-  font-size: 0.9rem;
-}
-
-.offers__offer-replies-reply-user {
-  font-size: 0.7rem;
-  font-style: italic;
-  text-align: right;
-}
-
-.offers__offer-form {
-  align-self: center;
-  border: 1px solid #ccc;
-  border-radius: 10rem;
-  padding: 0.1rem;
-  background-color: #FBFDFF;
-  width: max-content;
-  display: flex;
-  margin: 1rem;
-}
-.offers__offer-form-text {
- all: unset;
- margin: 0 1rem;
- background-color: white;
-}
-.offers__offer-form-submit {
-  height: 2rem;
-  width: 2rem;
-  border: none;
-  border-radius: 10rem;
-  padding: .2rem;
-  // color: white;
-  background-color: white;
-}
-
 .item__counts-fav {
   width: 100%;
   padding: .3rem .6rem;
