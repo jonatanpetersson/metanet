@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const jwtSecret = process.env.JWT_SECRET;
-const protectedResources = /getUserByUsername|createParcel|createUser/;
+const protectedResources = /getUserByUsername|createParcel|createUser|getOffersByUsername|createOffer|updateOfferById/;
 
 export const isAuthorized = (req, res, next) => {
   const requestQuery = req.body.query;

@@ -11,6 +11,7 @@ function AddParcel() {
   const loggedInUser = useSelector(state => state.authorization);
   const [idInput, setIdInput] = useState(null);
   const [inputData, setInputData] = useState({ metaverse: 'cryptovoxels' });
+  const [form, setForm] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,11 +20,14 @@ function AddParcel() {
   const handleIdConfirmation = ev => {
     ev.preventDefault();
     loadInfoToCreateParcel(setInputData, idInput, inputData);
+    ev.target.reset();
   }
   const addHandler = (ev) => {
     ev.preventDefault();
     dispatch(verifyTokenAction());
     loggedInUser ? createParcel(inputData) : navigate('/login');
+    setInputData({ metaverse: 'cryptovoxels' });
+    setForm(true);
   }
 
   return (
@@ -39,6 +43,7 @@ function AddParcel() {
         <input className="page__register__form-text" type="text" name="parcelid" onChange={handleIdInput} required />
         <input className="page__register__form-btn" type="submit" value="Load parcel information" />
       </form>
+
       {inputData.parcel_id ?
         <form className="page__register__form" onSubmit={addHandler}>
 
@@ -66,7 +71,11 @@ function AddParcel() {
 
           <input className="page__register__form-btn" type="submit" value="Add parcel to marketplace" />
         </form>
-        : ''}
+        : !form ? '' : 
+        <div className="item__trading-success">
+              <span className="material-icons-outlined" >task_alt</span>
+              <p> Parcel added to marketplace</p>
+            </div>}
     </main>
   )
 }

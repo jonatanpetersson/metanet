@@ -9,7 +9,7 @@ import Eth from '../../../assets/img/eth.svg';
 const ItemTrading = ({ parcelData }) => {
   const loggedInUser = useSelector(state => state.authorization);
   const [inputData, setInputData] = useState({ ...parcelData, bidder: loggedInUser });
-  const [Form, setForm] = useState(0);
+  const [form, setForm] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,8 +33,8 @@ const ItemTrading = ({ parcelData }) => {
       </div>
       <div className="item__trading-btngroup">
         <a href={parcelData.external_url} target="_blank" rel="noreferrer" className="item__trading-btnbuy">Buy now on official site</a>
-        {(Form === 0) ? <button className="item__trading-btnoffer" onClick={toggleOfferHandler} >{loggedInUser ? 'Make offer' : 'Log in to make offer'}</button>
-          : (Form === 1) ? <form className="page__register__form" onSubmit={submitOfferHandler}>
+        {(form === 0) ? <button className="item__trading-btnoffer" onClick={toggleOfferHandler} >{loggedInUser ? 'Make offer' : 'Log in to make offer'}</button>
+          : (form === 1) ? <form className="page__register__form" onSubmit={submitOfferHandler}>
             <label htmlFor="parcelid">Make your offer</label>
             <input className="page__register__form-text" type="text" name="offer" placeholder="Offer" onChange={handleInputData} required />
             <input className="page__register__form-text" type="text" name="message" placeholder="Message to owner (optional)" onChange={handleInputData} />

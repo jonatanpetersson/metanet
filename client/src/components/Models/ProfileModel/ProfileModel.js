@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { logoutAction } from '../../../actions/auth.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import './ProfileModel.scss';
 import defaultProfileImage from '../../../assets/img/avatar.jpeg'
 
 export const ProfileModel = () => {
+  const loggedInUser = useSelector(state => state.authorization)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,13 +17,13 @@ export const ProfileModel = () => {
     navigate('/');
   }
     return (
-        <div class="profile__model-window">
+        <div className="profile__model-window">
             <div className="profile__model-wrapper">
-                <Link to='/' title="Close" class="profile__model-close">
+                <Link to='/' title="Close" className="profile__model-close">
                     <span className="material-icons-outlined">close</span>
                 </Link>
                 <img className="profile__model__img" src={defaultProfileImage} alt="Profile img" />
-                <h2 className="profile__model__title">Milos Tanaskovic</h2>
+                <h2 className="profile__model__title">{loggedInUser}</h2>
                 <nav className="profile__model-nav">
                     <Link className="nav__link" to='/profile/account'>
                         <span className="nav__link-icon material-icons-outlined">home</span>

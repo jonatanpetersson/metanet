@@ -118,7 +118,7 @@ export const createOffer = async inputData => {
 export const updateOffer = async inputData => {
   try {
     const query = updateOfferMutation(inputData);
-    await axios.post('http://localhost:5000/graphql',
+    return await axios.post('http://localhost:5000/graphql',
       { query },
       {
         headers:

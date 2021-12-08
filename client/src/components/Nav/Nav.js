@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { ProfileModel } from '../Models/ProfileModel/ProfileModel';
 import './Nav.scss';
 import '../Models/ProfileModel/ProfileModel.scss';
 
 const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const loggedInUser = useSelector(state => state.authorization);
 
   return (
@@ -29,7 +25,6 @@ const Nav = () => {
         <span className="nav__link-icon material-icons-outlined">info</span>
         <p className="nav__link-text">About</p>
       </Link>
-      {/* render it when user is login */}
       {loggedInUser 
       ? <Link className="nav__link" to="/profile" >
         <span className="nav__link-icon material-icons-outlined">face</span>
