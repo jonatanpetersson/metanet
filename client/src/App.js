@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Home from './pages/Home/Home';
 import Marketplace from './pages/Marketplace/Marketplace';
 import AddParcel from './pages/AddParcel/AddParcel';
@@ -16,7 +17,8 @@ import Footer from './components/Footer/Footer';
 import './App.scss';
 
 export const App = () => {
-
+  const isOpenModel = useSelector(state => state.models);
+  const isLoggedIn = useSelector(state => state.authorization);
   return (
     <>
       {/* <div class="hero-content">
@@ -26,6 +28,11 @@ export const App = () => {
        </video>
      </div> */}
       <Header />
+      {isLoggedIn ?
+        <ProfileModel />
+      : 
+        ''
+      }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/marketplace" element={<Marketplace />} />

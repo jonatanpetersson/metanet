@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { updateOffer } from '../../../api/fetch';
 import { useSelector } from 'react-redux';
+import defaultProfileImage from '../../../assets/img/avatar.jpeg'
 import './Replies.scss';
 
 const Replies = ({ offerData }) => {
@@ -18,20 +19,21 @@ const Replies = ({ offerData }) => {
 
   return (
     <>
-    {(offerData.message !== 'undefined') ? <><h4><i>"{offerData.message}"</i></h4><p>- <i>{offerData.bidder}</i></p></> : ''}
-    {!offerData.replies ? '' :
-    <ul className="offer__replies">
-      {offerData.replies.map((reply, idx) => <li key={idx} className="offers__offer-replies-reply">
-        <div className="offers__offer-replies-reply-text">{reply.reply}</div>
-        <p className="offers__offer-replies-reply-user">{reply.user}</p>
-      </li>)}
-    </ul>}
+      {(offerData.message !== 'undefined') ? <><h4><i>"{offerData.message}"</i></h4><p>- <i>{offerData.bidder}</i></p></> : ''}
+      {!offerData.replies ? '' :
+      <ul className="offer__replies">
+        {offerData.replies.map((reply, idx) => <li key={idx} className="offers__offer-replies-reply">
+          <img className="offers__offer-replies-reply-img" src={defaultProfileImage} alt="offer img" />
+          <p className="offers__offer-replies-reply-user">{reply.user}: </p>
+          <div className="offers__offer-replies-reply-text">{reply.reply}</div>
+        </li>)}
+      </ul>}
 
-  <form className="offers__offer-form" onSubmit={handleSubmit}>
-    <input className="offers__offer-form-text" type="text" name="reply" onChange={handleInputData} required />
-    <input className="offers__offer-form-submit material-icons-outlined" type="submit" value="send" />
-  </form>
-  </>
+      <form className="offers__offer-form" onSubmit={handleSubmit}>
+        <input className="offers__offer-form-text" type="text" name="reply" onChange={handleInputData} required />
+        <input className="offers__offer-form-submit material-icons-outlined" type="submit" value="send" />
+      </form>
+    </>
   )
 }
 

@@ -1,0 +1,61 @@
+.offers__offer-replies-reply {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    gap: .5rem;
+    margin: 1rem;
+}
+
+.offers__offer-form-submit {
+    cursor: pointer;
+}
+
+.offers__offer-replies-reply-img {
+    width: 5%;
+    border-radius: 50%;
+}
+
+.offers__offer-replies {
+    list-style-type: none;
+    padding: 0.5rem;
+  }
+  
+  .offers__offer-replies-reply-text {
+    border: none;
+    border-radius: .2rem;
+    padding: .2rem;
+    background-color: #eee;
+    font-size: 0.9rem;
+    flex-grow: 1;
+    word-break: break-all;
+  }
+  
+  .offers__offer-replies-reply-user {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .offers__offer-form {
+    align-self: center;
+    border: 1px solid #ccc;
+    border-radius: 10rem;
+    padding: 0.1rem;
+    background-color: #FBFDFF;
+    width: max-content;
+    display: flex;
+    margin: 1rem;
+  }
+  .offers__offer-form-text {
+   all: unset;
+   margin: 0 1rem;
+   background-color: white;
+  }
+  .offers__offer-form-submit {
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    border-radius: 10rem;
+    padding: .2rem;
+    // color: white;
+    background-color: white;
+  }
