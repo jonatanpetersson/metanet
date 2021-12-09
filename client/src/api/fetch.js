@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const login = async (loginInfo, setLoginInfo, dispatch, navigate, loginAction) => {
   try {
-    const response = await axios.post('http://localhost:4000/api/auth/login', { username: loginInfo.username, password: loginInfo.password });
+    const response = await axios.post(process.env.AUTH_LOGIN || 'http://localhost:4000/api/auth/login', { username: loginInfo.username, password: loginInfo.password });
     setLoginInfo({ username: '', password: '' });
     dispatch(loginAction(response.headers.metanetauth));
     navigate('/');
@@ -16,7 +16,7 @@ export const login = async (loginInfo, setLoginInfo, dispatch, navigate, loginAc
 export const loadMarketplace = async setParcelsData => {
   try {
     const query = getParcelsQuery();
-    const response = await axios.post('http://localhost:5000/graphql', { query });
+    const response = await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql', { query });
     const allParcels = response.data.data.getParcels;
     setParcelsData(allParcels);
   } catch (err) {
@@ -28,7 +28,7 @@ export const loadProfile = async setUserData => {
   try {
     const username = JSON.parse(Buffer.from(localStorage.jwt.split('.')[1], 'base64')).username;
     const query = getUserByUsername(username);
-    const response = await axios.post('http://localhost:5000/graphql',
+    const response = await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql',
       { query },
       {
         headers:
@@ -44,7 +44,7 @@ export const loadProfile = async setUserData => {
 export const loadParcel = async (location, setParcelData) => {
   const id = location.pathname.split('/')[2];
   const query = getParcelByIdQuery(id);
-  const response = await axios.post('http://localhost:5000/graphql', { query });
+  const response = await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql', { query });
   const parcel = response.data.data.getParcelById;
   setParcelData(parcel);
 }
@@ -73,7 +73,7 @@ export const loadInfoToCreateParcel = async (setInputData, idInput, inputData) =
 export const createParcel = async inputData => {
   try {
     const query = createParcelMutation(inputData);
-    await axios.post('http://localhost:5000/graphql',
+    await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql',
       { query },
       {
         headers:
@@ -88,7 +88,7 @@ export const loadOffers = async (loggedInUser, setOffersData) => {
   try {
     const username = loggedInUser;
     const query = getOffersByUsername(username);
-    const response = await axios.post('http://localhost:5000/graphql',
+    const response = await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql',
       { query },
       {
         headers:
@@ -104,7 +104,7 @@ export const loadOffers = async (loggedInUser, setOffersData) => {
 export const createOffer = async inputData => {
   try {
     const query = createOfferMutation(inputData);
-    await axios.post('http://localhost:5000/graphql',
+    await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql',
       { query },
       {
         headers:
@@ -118,7 +118,7 @@ export const createOffer = async inputData => {
 export const updateOffer = async inputData => {
   try {
     const query = updateOfferMutation(inputData);
-    return await axios.post('http://localhost:5000/graphql',
+    return await axios.post(process.env.RESOURCES || 'http://localhost:5000/graphql',
       { query },
       {
         headers:
