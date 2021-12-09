@@ -1,6 +1,8 @@
 import { getParcelsQuery, getUserByUsername, getParcelByIdQuery, getOffersByUsername } from './querys.js';
 import { createParcelMutation, createOfferMutation, updateOfferMutation } from './mutations.js';
 import axios from 'axios';
+import dotenv from 'dotenv'
+dotenv.config();
 
 export const login = async (loginInfo, setLoginInfo, dispatch, navigate, loginAction) => {
   try {
