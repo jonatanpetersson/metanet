@@ -19,7 +19,7 @@ const Login = () => {
   return (
     <main className="page__register">
       <h1 className="page__register-title">Login</h1>
-      <form className="page__register__form" onSubmit={loginHandler}>
+      <form className="page__register__form" onSubmit={loginHandler} autoComplete="off">
         <label htmlFor="email">Username</label>
         <input className="page__register__form-text" type="text" name="username" placeholder="Please provide your username" onChange={inputHandler} required />
         <label htmlFor="password">Password</label>

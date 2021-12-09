@@ -6,7 +6,7 @@ export const AboutForm = () => {
     return (
         <section className="profile__form">
             <h2 className="profile__form-title">Contact Us:</h2>
-            <form className="profile__form__addmore">
+            <form className="profile__form__addmore" autoComplete="off">
                 <div>
                     <label htmlFor="name">Your Name: </label>
                     <input className="profile__form__addmore-text" type="text" name="name" placeholder="Please provide your name" required/>

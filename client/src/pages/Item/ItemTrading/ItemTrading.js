@@ -34,7 +34,7 @@ const ItemTrading = ({ parcelData }) => {
       <div className="item__trading-btngroup">
         <a href={parcelData.external_url} target="_blank" rel="noreferrer" className="item__trading-btnbuy">View on official site</a>
         {(form === 0) ? <button className="item__trading-btnoffer" onClick={toggleOfferHandler} >{loggedInUser ? 'Make offer' : 'Log in to make offer'}</button>
-          : (form === 1) ? <form className="page__register__form" onSubmit={submitOfferHandler}>
+          : (form === 1) ? <form className="page__register__form" onSubmit={submitOfferHandler} autoComplete="off">
             <label htmlFor="parcelid">Make your offer</label>
             <input className="page__register__form-text" type="text" name="offer" placeholder="Offer" onChange={handleInputData} required />
             <input className="page__register__form-text" type="text" name="message" placeholder="Message to owner (optional)" onChange={handleInputData} />

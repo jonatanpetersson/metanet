@@ -27,7 +27,7 @@ const SignUp = () => {
         <Link to="/login">Log in</Link>
       </p>
 
-      <form className="page__register__form" onSubmit={signupHandler}>
+      <form className="page__register__form" onSubmit={signupHandler} autoComplete="off">
         <label htmlFor="email">Email address</label>
         <input className="page__register__form-text" type="text" name="email" placeholder="Please provide your email address" onChange={inputHandler} required/>
         

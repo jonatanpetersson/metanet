@@ -38,14 +38,14 @@ function AddParcel() {
         <option value="cryptovoxels">Cryptovoxels</option>
       </select>
 
-      <form className="page__register__form" onSubmit={handleIdConfirmation}>
+      <form className="page__register__form" onSubmit={handleIdConfirmation} autoComplete="off">
         <label htmlFor="parcelid">Pass in your official parcel id</label>
         <input className="page__register__form-text" type="text" name="parcelid" onChange={handleIdInput} required />
         <input className="page__register__form-btn" type="submit" value="Load parcel information" />
       </form>
 
       {inputData.parcel_id ?
-        <form className="page__register__form" onSubmit={addHandler}>
+        <form className="page__register__form" onSubmit={addHandler} autoComplete="off">
 
           <div className="item__counts-img">
             <img src={inputData.image} alt="" />

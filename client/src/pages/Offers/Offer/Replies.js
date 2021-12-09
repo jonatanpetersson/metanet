@@ -29,7 +29,7 @@ const Replies = ({ offerData }) => {
           </li>)}
         </ul>}
 
-      <form className="offers__offer-form" onSubmit={handleSubmit}>
+      <form className="offers__offer-form" onSubmit={handleSubmit} autoComplete="off">
         <input className="offers__offer-form-text" type="text" name="reply" onChange={handleInputData} required />
         <input className="offers__offer-form-submit material-icons-outlined" type="submit" value="send" />
       </form>
