@@ -32,7 +32,7 @@ export const signupController = async (req, res) => {
       jwtSecret,
       { expiresIn: "1m" }
     );
-    await axios.post('http://localhost:5000/graphql',
+    await axios.post(process.env.RESOURCE_SERVER || 'http://localhost:5000/graphql',
       { query },
       { headers: 
         { 'Authorization': `Bearer ${accessToken}` }
