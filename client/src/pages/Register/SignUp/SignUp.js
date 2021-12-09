@@ -12,7 +12,7 @@ const SignUp = () => {
   const signupHandler = async ev => {
     ev.preventDefault();
     try {
-      await axios.post(process.env.AUTH_SIGNUP || 'http://localhost:4000/api/auth/signup', { username: signupInfo.username, email: signupInfo.email, password: signupInfo.password});
+      await axios.post('https://metanet-auth-server.herokuapp.com/api/auth/signup' || 'http://localhost:4000/api/auth/signup', { username: signupInfo.username, email: signupInfo.email, password: signupInfo.password});
       navigate('/login')
     } catch (err) {
       console.log(err.message);
