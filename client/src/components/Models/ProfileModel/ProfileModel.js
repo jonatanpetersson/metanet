@@ -15,12 +15,13 @@ export const ProfileModel = () => {
   const isProfileOpen = useSelector(state => state.models);
 
   const logoutHandler = () => {
+    dispatch(profileModel(isProfileOpen));
     dispatch(logoutAction());
     navigate('/');
   }
 
   const handleCloseModel = () => {
-    dispatch(profileModel(isProfileOpen))
+    dispatch(profileModel(isProfileOpen));
   }
     return (
         <div className={`profile__model-window ${isProfileOpen ? "profile__model-window-open" : "profile__model-window-close"}`}>
@@ -39,7 +40,7 @@ export const ProfileModel = () => {
                         <span className="nav__link-icon material-icons-outlined">launch</span>
                         <p className="nav__link-font nav__provile">Offers</p>
                     </Link>
-                    <Link className="nav__link" to='/blog' onClick={handleCloseModel}>
+                    <Link className="nav__link" to='/marketplace' onClick={handleCloseModel}>
                         <span className="nav__link-icon material-icons-outlined">favorite_border</span>
                         <p className="nav__link-font nav__provile">Favorites</p>
                     </Link>

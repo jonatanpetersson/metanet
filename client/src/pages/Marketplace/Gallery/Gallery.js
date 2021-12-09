@@ -20,7 +20,7 @@ const Gallery = ({isGridView}) => {
               <CircularProgress />
               <span>Loading marketplace...</span>
             </>
-          : parcelsData.map(parcel =>
+          : [...parcelsData].reverse().map(parcel =>
             <Link key={parcel._id} className="gallery__item-link" to={`/marketplace/${parcel._id}`}>
               <Parcel 
                 data-id={parcel._id} 

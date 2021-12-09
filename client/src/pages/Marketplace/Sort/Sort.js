@@ -12,10 +12,7 @@ const Sort = ({isGridView, setGridView}) => {
         <div className="sort__form-options" >
           <select className="sort__form__select" id="metaverses" name="metaverses">
             <option value="allMetaverses">All Metaverses</option>
-            <option value="decentraland">Decentraland</option>
-            <option value="jonatansland">Jonatansland</option>
-            <option value="milosland">Milosland</option>
-            <option value="rezasland">Rezasland</option>
+            <option value="decentraland">Cryptovoxels</option>
           </select>
 
           <div className="sort__form-btn-group">

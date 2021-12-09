@@ -26,13 +26,13 @@ const ItemTrading = ({ parcelData }) => {
 
   return (
     <section className="item__trading">
-      <p className="item__trading-price">Current price</p>
+      <p className="item__trading-price">Asking price</p>
       <div className="item__trading-info">
         <span><img className="item__trading-img" alt="Ethereum" src={Eth} /></span>
         <span className="item__trading-display">{parcelData.price} ETH</span>
       </div>
       <div className="item__trading-btngroup">
-        <a href={parcelData.external_url} target="_blank" rel="noreferrer" className="item__trading-btnbuy">Buy now on official site</a>
+        <a href={parcelData.external_url} target="_blank" rel="noreferrer" className="item__trading-btnbuy">View on official site</a>
         {(form === 0) ? <button className="item__trading-btnoffer" onClick={toggleOfferHandler} >{loggedInUser ? 'Make offer' : 'Log in to make offer'}</button>
           : (form === 1) ? <form className="page__register__form" onSubmit={submitOfferHandler}>
             <label htmlFor="parcelid">Make your offer</label>

@@ -23,38 +23,44 @@
     font-weight: 700;
 }
 
-.item__trading-dollar{
-    color: gray;
+.item__trading-img{
+    height: 1.7rem;
 }
 
 .item__trading-btngroup{
     display: flex;
     flex-direction: column;
     gap: .5rem;
-
-
 }
 
-.item__trading-btnbuy{
-    border: none;
+.item__trading-btnbuy {
+  border-radius: .4rem;
+  background-color:white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.7rem;
+  color: black;
+}
+
+.item__trading-btnbuy:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.item__trading-btnoffer{
+    all: unset;
+    border: 1px solid #3d81db;
     border-radius: .4rem;
-    height: 2.5rem;
     background-color: #3d81db;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    padding: 0.6rem;
+    padding: 0.7rem;
 }
-.item__trading-btnoffer{
-    border: none;
-    border-radius: .4rem;
-    height: 40px;
-    background-color:white;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
 .item__trading-success {
   display: flex;
   align-self: center;

@@ -41,11 +41,11 @@ export const updateOfferMutation = (inputData) => `
 
 mutation {
   updateOfferById(offer: {
-    parcel_id: "${inputData.parcel_id}",
+    _id: "${inputData._id}",
     reply: "${inputData.reply}",
     user: "${inputData.user}"
   }) {
-    parcel_id
+    _id
     replies {
       reply
       user

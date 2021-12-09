@@ -7,7 +7,7 @@ import './Replies.scss';
 const Replies = ({ offerData }) => {
   const loggedInUser = useSelector(state => state.authorization);
   const [mappingData, setMappingData] = useState({ ...offerData });
-  const [inputData, setInputData] = useState({ parcel_id: offerData.parcel_id, user: loggedInUser });
+  const [inputData, setInputData] = useState({ _id: offerData._id, user: loggedInUser });
 
   const handleInputData = ev => setInputData({ ...inputData, [ev.target.name]: ev.target.value });
   const handleSubmit = async (ev) => {

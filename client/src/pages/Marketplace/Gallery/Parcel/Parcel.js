@@ -23,7 +23,7 @@ const Parcel = ({ parcel, isGridView }) => {
       <footer className="gallery__wrapper__footer">
         <div className="gallery__wrapper__footer-fav">
           <span className="material-icons-outlined">favorite_border</span>
-          <span>75</span>
+          <span></span>
         </div>
       </footer>
     </li>

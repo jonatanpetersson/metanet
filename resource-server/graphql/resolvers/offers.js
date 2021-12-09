@@ -1,19 +1,22 @@
 import { OfferModel } from "../../models/offer.js";
 
 export const getOffersByUsername = async (args) => {
+  console.log(args);
   try {
-    const fetchedOffers = await OfferModel.find(args);
+    console.log(args);
+    const fetchedOffers = await OfferModel.find({$or:[{ bidder: args.user }, { owner: args.user }]});
+    console.log(fetchedOffers.replies)
     return fetchedOffers;
   } catch (err) {
     console.log(err.message);
   };
 };
 
-export const updateOfferById = async ({ offer: { parcel_id, reply, user } }) => {
+export const updateOfferById = async ({ offer: { _id, reply, user } }) => {
   try {
     const message = { "reply": reply, "user": user };
     const updatedOffer = await OfferModel.findOneAndUpdate(
-      { "parcel_id": parcel_id },
+      { "_id": _id },
       { $push: { "replies": message } },
       { new: true }
       );

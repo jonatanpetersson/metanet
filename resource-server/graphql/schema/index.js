@@ -69,7 +69,7 @@ type Offer {
 }
 
 input updateOfferInput {
-  parcel_id: String
+  _id: String
   reply: String
   user: String
 }
